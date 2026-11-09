@@ -1,0 +1,26 @@
+name: Feature / architecture proposal
+description: Propose a new capability or a change to an architectural decision
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+  - type: input
+    id: adr
+    attributes:
+      label: Related ADRs
+      placeholder: e.g. ADR-0003, ADR-0004
+  - type: checkboxes
+    id: impact
+    attributes:
+      label: Impact
+      options:
+        - label: Requires a new or superseding ADR
+        - label: Changes a contract in specs/
