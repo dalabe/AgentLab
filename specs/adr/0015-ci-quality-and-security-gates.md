@@ -25,7 +25,7 @@ quality and security before it reaches `main`.
 | Supply-chain posture | OpenSSF Scorecard | `scorecard.yml` | weekly | report |
 | Dependency updates | Dependabot (nuget, npm ×2, github-actions) | `.github/dependabot.yml` | weekly | — |
 
-Workflows declare least-privilege `permissions:` and use pinned major versions of actions.
+Workflows declare least-privilege `permissions:` and pin every action to a full commit SHA (version in a trailing comment, updated by Dependabot).
 
 ## Consequences
 
