@@ -68,24 +68,38 @@ public static class TokenEndpoint
 
         if (!secretsMatch)
         {
-            logger.LogWarning("Intento de autenticación de cliente de servicio fallido para client_id={ClientId}.", clientId);
-            return Unauthorized();
+            logger.LogWarning("Intento de autenticación de cliente de servicio fallido para client_id={ClientId}.", SanitizeForLog(clientId));
+            return InvalidClient();
         }
 
         var scope = string.IsNullOrWhiteSpace(requestedScope) ? McpSecurityDefaults.McpInvokeScope : requestedScope;
 
         if (!client!.AllowedScopes.Contains(scope))
         {
-            logger.LogWarning("Cliente {ClientId} solicitó un scope no autorizado: {Scope}.", clientId, scope);
+            logger.LogWarning("Cliente {ClientId} solicitó un scope no autorizado: {Scope}.", client.ClientId, SanitizeForLog(scope));
             return BadRequest("invalid_scope", $"El cliente no está autorizado para el scope '{scope}'.");
         }
 
-        var issued = JwtAccessTokenFactory.Create(jwtOptions.Value, clientId, scope);
+        // A partir de aquí solo se usan valores de la configuración (client_id y scope registrados),
+        // nunca los textos enviados por el llamador.
+        var grantedScope = client.AllowedScopes.First(s => s == scope);
+        var issued = JwtAccessTokenFactory.Create(jwtOptions.Value, client.ClientId, grantedScope);
 
         logger.LogInformation("Access token emitido para client_id={ClientId}, scope={Scope}, expira en {ExpiresIn}s.",
-            clientId, scope, issued.ExpiresInSeconds);
+            client.ClientId, grantedScope, issued.ExpiresInSeconds);
 
-        return Results.Ok(new TokenSuccessResponse(issued.AccessToken, "Bearer", issued.ExpiresInSeconds, scope));
+        return Results.Ok(new TokenSuccessResponse(issued.AccessToken, "Bearer", issued.ExpiresInSeconds, grantedScope));
+    }
+
+    /// <summary>
+    /// Neutraliza valores enviados por el llamador antes de escribirlos en logs (log forging):
+    /// elimina saltos de línea y limita la longitud.
+    /// </summary>
+    private static string SanitizeForLog(string value)
+    {
+        var sanitized = value.Replace("\r", string.Empty, StringComparison.Ordinal)
+            .Replace("\n", string.Empty, StringComparison.Ordinal);
+        return sanitized.Length <= 64 ? sanitized : sanitized[..64] + "…";
     }
 
     private static bool FixedTimeEquals(string a, string b)
@@ -101,7 +115,7 @@ public static class TokenEndpoint
     private static IResult BadRequest(string error, string description) =>
         Results.Json(new OAuthErrorResponse(error, description), statusCode: StatusCodes.Status400BadRequest);
 
-    private static IResult Unauthorized() =>
+    private static IResult InvalidClient() =>
         Results.Json(new OAuthErrorResponse("invalid_client", "Credenciales de cliente inválidas."), statusCode: StatusCodes.Status401Unauthorized);
 }
 

@@ -18,7 +18,8 @@ public sealed class ProcesosMcpClientAccessor : IProcesosMcpClientAccessor, IAsy
     private readonly ILoggerFactory _loggerFactory;
     private readonly SemaphoreSlim _initLock = new(1, 1);
 
-    private McpClient? _client;
+    // volatile: double-checked locking — the second check below re-reads after acquiring the lock.
+    private volatile McpClient? _client;
 
     public ProcesosMcpClientAccessor(
         IHttpClientFactory httpClientFactory,
