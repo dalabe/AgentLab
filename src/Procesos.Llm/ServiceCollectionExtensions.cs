@@ -20,13 +20,17 @@ public static class ServiceCollectionExtensions
     {
         services.Configure<LlmOptions>(configuration.GetSection(LlmOptions.SectionName));
 
+        // AnthropicClient es IDisposable: lo registra el contenedor de DI, que es su dueño y lo
+        // libera al apagar la aplicación. Solo se crea si el proveedor configurado es Anthropic.
+        services.AddSingleton(sp => CreateAnthropicClient(sp.GetRequiredService<IOptions<LlmOptions>>().Value.Anthropic));
+
         services.AddSingleton<IChatClient>(sp =>
         {
             var options = sp.GetRequiredService<IOptions<LlmOptions>>().Value;
 
             IChatClient inner = options.Provider.Equals("Mock", StringComparison.OrdinalIgnoreCase)
                 ? new MockChatClient()
-                : BuildAnthropicChatClient(options.Anthropic);
+                : sp.GetRequiredService<AnthropicClient>().AsIChatClient(options.Anthropic.Model, options.Anthropic.MaxOutputTokens);
 
             return inner.AsBuilder().UseFunctionInvocation().Build();
         });
@@ -34,7 +38,7 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    private static IChatClient BuildAnthropicChatClient(AnthropicLlmOptions options)
+    private static AnthropicClient CreateAnthropicClient(AnthropicLlmOptions options)
     {
         if (string.IsNullOrWhiteSpace(options.ApiKey))
         {
@@ -43,7 +47,6 @@ public static class ServiceCollectionExtensions
                 "o cambie 'Llm:Provider' a \"Mock\" para probar sin una API key real. Ver docs/RUNBOOK.md.");
         }
 
-        return new AnthropicClient(new() { ApiKey = options.ApiKey })
-            .AsIChatClient(options.Model, options.MaxOutputTokens);
+        return new AnthropicClient(new() { ApiKey = options.ApiKey });
     }
 }
