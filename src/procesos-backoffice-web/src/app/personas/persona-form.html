@@ -1,0 +1,66 @@
+<a routerLink="/personas" class="back-link">← Volver a personas</a>
+
+<h1>{{ esNuevo ? 'Nueva persona' : 'Editar persona' }}</h1>
+
+@if (cargando()) {
+  <mat-spinner diameter="32" />
+} @else {
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="persona-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Documento de identidad</mat-label>
+      <input matInput formControlName="documentoIdentidad" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombres</mat-label>
+      <input matInput formControlName="nombres" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Apellidos</mat-label>
+      <input matInput formControlName="apellidos" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="telefono" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput type="date" formControlName="fechaNacimiento" />
+    </mat-form-field>
+
+    @if (errorMensaje()) {
+      <p class="error">{{ errorMensaje() }}</p>
+    }
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="guardando()">
+      {{ guardando() ? 'Guardando…' : 'Guardar' }}
+    </button>
+  </form>
+
+  @if (!esNuevo) {
+    <section class="procesos-section">
+      <h2>Procesos de esta persona</h2>
+
+      @if (procesos().length === 0) {
+        <p class="empty">Esta persona no tiene procesos registrados.</p>
+      } @else {
+        <mat-nav-list>
+          @for (proceso of procesos(); track proceso.id) {
+            <a mat-list-item [routerLink]="['/procesos', proceso.id]">
+              <span matListItemTitle>{{ proceso.numeroExpediente }} — {{ proceso.tipo }}</span>
+              <span matListItemLine>{{ proceso.estado }} · {{ proceso.entidadOJuzgado }}</span>
+            </a>
+          }
+        </mat-nav-list>
+      }
+    </section>
+  }
+}

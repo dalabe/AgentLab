@@ -1,0 +1,93 @@
+<div class="page-header">
+  <h1>Procesos</h1>
+  <a mat-flat-button color="primary" routerLink="/procesos/nuevo">
+    <mat-icon>add</mat-icon>
+    Nuevo proceso
+  </a>
+</div>
+
+<div class="filters">
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar por expediente o descripción</mat-label>
+    <input
+      matInput
+      [ngModel]="busqueda()"
+      (ngModelChange)="busqueda.set($event)"
+      (keyup.enter)="cargar()"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Tipo</mat-label>
+    <mat-select [ngModel]="tipoFiltro()" (ngModelChange)="tipoFiltro.set($event); cargar()">
+      <mat-option [value]="null">(todos)</mat-option>
+      @for (t of tipos; track t) {
+        <mat-option [value]="t">{{ t }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Estado</mat-label>
+    <mat-select [ngModel]="estadoFiltro()" (ngModelChange)="estadoFiltro.set($event); cargar()">
+      <mat-option [value]="null">(todos)</mat-option>
+      @for (e of estados; track e) {
+        <mat-option [value]="e">{{ e }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-stroked-button (click)="cargar()">Buscar</button>
+</div>
+
+@if (cargando()) {
+  <p>Cargando…</p>
+} @else {
+  <table mat-table [dataSource]="procesos()" class="full-width-table">
+    <ng-container matColumnDef="numeroExpediente">
+      <th mat-header-cell *matHeaderCellDef>Expediente</th>
+      <td mat-cell *matCellDef="let p">{{ p.numeroExpediente }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+      <td mat-cell *matCellDef="let p">{{ p.tipo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let p">{{ p.estado }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="personaNombreCompleto">
+      <th mat-header-cell *matHeaderCellDef>Persona</th>
+      <td mat-cell *matCellDef="let p">{{ p.personaNombreCompleto }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="entidadOJuzgado">
+      <th mat-header-cell *matHeaderCellDef>Entidad/Juzgado</th>
+      <td mat-cell *matCellDef="let p">{{ p.entidadOJuzgado }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let p">
+        <button mat-icon-button (click)="eliminar(p, $event)" aria-label="Eliminar">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: columnas"
+      (click)="abrir(row)"
+      class="clickable-row"
+    ></tr>
+  </table>
+
+  @if (procesos().length === 0) {
+    <p class="empty">No hay procesos que coincidan con los filtros.</p>
+  }
+}

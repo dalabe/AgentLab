@@ -1,0 +1,22 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2025-00042
+Tipo de documento:  Demanda
+Nombre de archivo:  Demanda arbitral por incumplimiento contractual.pdf
+Proceso:            Comercial - Activo
+Entidad/Juzgado:    Centro de Arbitraje y Conciliación - Cámara de Comercio de Cali
+Parte:              Carlos Eduardo Rodríguez Salazar (doc. identidad 1050607080)
+Fecha de carga:     2025-02-18
+=====================================================================
+Señor Juez / Despacho (Centro de Arbitraje y Conciliación - Cámara de Comercio de Cali):
+
+Carlos Eduardo Rodríguez Salazar, identificado(a) con documento de identidad No. 1050607080,
+por medio del presente escrito formula demanda dentro del proceso EXP-2025-00042,
+con fundamento en los siguientes hechos:
+
+Arbitraje por incumplimiento de contrato de suministro de materiales de construcción; se reclama el pago de facturas vencidas más intereses moratorios.
+
+Con base en lo anterior, se solicita al despacho admitir la presente demanda, dar el trámite
+legal correspondiente y, en su oportunidad, proferir sentencia favorable a las pretensiones
+de la parte demandante.

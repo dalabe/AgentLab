@@ -1,0 +1,28 @@
+@baseUrl = http://localhost:5090
+
+### Preguntar por un expediente concreto (funciona tanto en modo Mock como con Anthropic real).
+POST {{baseUrl}}/api/chat/messages
+Content-Type: application/json
+
+{
+  "sessionId": null,
+  "message": "¿Cuál es el estado del proceso EXP-2024-00031?"
+}
+
+### Preguntar por los procesos de una persona (usa el nombre completo tal como está en el seed).
+POST {{baseUrl}}/api/chat/messages
+Content-Type: application/json
+
+{
+  "sessionId": null,
+  "message": "¿Qué procesos tiene Juan Carlos Pérez Londoño?"
+}
+
+### Pregunta sin datos: debe responder que no encontró información (no debe inventar datos).
+POST {{baseUrl}}/api/chat/messages
+Content-Type: application/json
+
+{
+  "sessionId": null,
+  "message": "¿Cuál es el estado del proceso EXP-9999-00000?"
+}

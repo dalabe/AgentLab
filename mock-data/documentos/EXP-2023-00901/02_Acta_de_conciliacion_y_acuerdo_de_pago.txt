@@ -1,0 +1,17 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2023-00901
+Tipo de documento:  Resolucion
+Nombre de archivo:  Acta de conciliación y acuerdo de pago.pdf
+Proceso:            Laboral - Cerrado
+Entidad/Juzgado:    Juzgado 7 Laboral del Circuito de Cali
+Parte:              Laura Valentina Torres Jiménez (doc. identidad 1060708090)
+Fecha de carga:     2023-03-29
+=====================================================================
+RESOLUCIÓN emitida dentro del proceso EXP-2023-00901 por Juzgado 7 Laboral del Circuito de Cali,
+en relación con:
+
+Demanda por indemnización por accidente de trabajo con incapacidad permanente parcial reconocida por la ARL.
+
+Estado actual del trámite: Cerrado. Conciliado: la empresa pagó la indemnización acordada y el proceso se cerró por transacción.
