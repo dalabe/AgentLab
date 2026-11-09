@@ -1,0 +1,30 @@
+# Procesos Legales Lab
+
+> Educational end-to-end Model Context Protocol (MCP) reference in .NET 10 / C# and Angular 21: a Spanish chat answers questions about people and legal cases by letting an LLM (Anthropic Claude or a deterministic Mock) call read-only tools on a JWT-protected MCP server, secured service-to-service with OAuth2 client credentials. Includes a BackOffice over SQL Server LocalDB. All data is synthetic.
+
+## Start here
+
+- [AGENTS.md](AGENTS.md): instructions, repository map, commands, conventions and boundaries for AI agents
+- [README.md](README.md): project overview and quick start
+
+## Architecture
+
+- [Architecture](docs/ARCHITECTURE.md): C4 context/container/component views, request sequence, data view, cross-cutting concerns
+- [Security model](docs/SECURITY.md): OAuth2 client credentials, JWT claims, defense in depth, STRIDE threat model
+- [Runbook](docs/RUNBOOK.md): prerequisites, User Secrets, running with Aspire or dotnet run, troubleshooting
+
+## Specifications
+
+- [System overview](specs/system-overview.md): scope, functional (FR-xx) and non-functional (NFR-xx) requirements
+- [MCP tools](specs/mcp-tools.md): transport, auth, the six read-only tools with inputs and outputs
+- [HTTP APIs](specs/http-api.md): TokenService, ChatApi and BackOffice.Api contracts
+- [Data model](specs/data-model.md): entities, constraints, enums, physical document storage, seed
+
+## Architecture decisions
+
+- [ADR index](specs/adr/README.md): fifteen accepted ADRs (MCP over HTTP, read-only tools, OAuth2 + JWT, HS256 for lab, IChatClient + Mock, LocalDB, Aspire scope, minimal APIs, filesystem storage, in-memory sessions, language conventions, no end-user auth, hardcoded frontend URLs, CI gates)
+
+## Optional
+
+- [Contributing](CONTRIBUTING.md): workflow, commit style, quality gates
+- [Security policy](SECURITY.md): vulnerability reporting
