@@ -1,0 +1,22 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2025-00310
+Tipo de documento:  Demanda
+Nombre de archivo:  Demanda declarativa por incumplimiento contractual.pdf
+Proceso:            Civil - Activo
+Entidad/Juzgado:    Juzgado 3 Civil del Circuito de Barranquilla
+Parte:              Diana Marcela Suárez Peña (doc. identidad 1080901020)
+Fecha de carga:     2025-04-07
+=====================================================================
+Señor Juez / Despacho (Juzgado 3 Civil del Circuito de Barranquilla):
+
+Diana Marcela Suárez Peña, identificado(a) con documento de identidad No. 1080901020,
+por medio del presente escrito formula demanda dentro del proceso EXP-2025-00310,
+con fundamento en los siguientes hechos:
+
+Proceso declarativo por incumplimiento de cláusulas de un contrato de arrendamiento de local comercial, incluyendo daños al inmueble.
+
+Con base en lo anterior, se solicita al despacho admitir la presente demanda, dar el trámite
+legal correspondiente y, en su oportunidad, proferir sentencia favorable a las pretensiones
+de la parte demandante.

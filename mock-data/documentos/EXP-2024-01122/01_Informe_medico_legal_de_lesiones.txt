@@ -1,0 +1,14 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2024-01122
+Tipo de documento:  Otro
+Nombre de archivo:  Informe médico legal de lesiones.pdf
+Proceso:            Penal - Suspendido
+Entidad/Juzgado:    Fiscalía 5 Seccional - Medellín
+Parte:              Andrés Felipe Ramírez Ocampo (doc. identidad 1070809010)
+Fecha de carga:     2024-11-02
+=====================================================================
+Documento asociado al proceso EXP-2024-01122, relacionado con:
+
+Proceso por lesiones personales culposas derivadas de un accidente de tránsito; suspendido mientras se resuelve una incidencia de prejudicialidad civil.

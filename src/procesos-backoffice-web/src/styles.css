@@ -1,0 +1,10 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}

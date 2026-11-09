@@ -1,0 +1,17 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2023-00450
+Tipo de documento:  Resolucion
+Nombre de archivo:  Acuerdo transaccional de recompra de participaciones.pdf
+Proceso:            Comercial - Cerrado
+Entidad/Juzgado:    Superintendencia de Sociedades - Bogotá
+Parte:              Jorge Luis Castañeda Mora (doc. identidad 1090102030)
+Fecha de carga:     2023-01-20
+=====================================================================
+RESOLUCIÓN emitida dentro del proceso EXP-2023-00450 por Superintendencia de Sociedades - Bogotá,
+en relación con:
+
+Conflicto societario entre socios de una SAS por exclusión indebida de un socio minoritario; resuelto mediante acuerdo de recompra de participaciones.
+
+Estado actual del trámite: Cerrado. Cerrado por transacción: la sociedad recompró las cuotas del socio minoritario en los términos acordados.

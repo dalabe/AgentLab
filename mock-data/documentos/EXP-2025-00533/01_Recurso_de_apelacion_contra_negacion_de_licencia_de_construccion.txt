@@ -1,0 +1,14 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2025-00533
+Tipo de documento:  Otro
+Nombre de archivo:  Recurso de apelación contra negación de licencia de construcción.pdf
+Proceso:            Administrativo - Activo
+Entidad/Juzgado:    Curaduría Urbana 1 de Bogotá
+Parte:              Jorge Luis Castañeda Mora (doc. identidad 1090102030)
+Fecha de carga:     2025-08-14
+=====================================================================
+Documento asociado al proceso EXP-2025-00533, relacionado con:
+
+Recurso contra la negación de una licencia de construcción por presunta afectación a norma de alturas en zona residencial.

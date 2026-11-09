@@ -1,0 +1,130 @@
+# Dynamic Application Security Testing: start the security-relevant services on the runner,
+# run black-box auth smoke tests and an OWASP ZAP baseline scan. See ADR-0015.
+# The services need no database for these checks (McpServer rejects before any tool runs).
+name: DAST
+
+on:
+  schedule:
+    - cron: '13 6 * * 1'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/Procesos.TokenService/**'
+      - 'src/Procesos.McpServer/**'
+      - 'src/Procesos.Security/**'
+      - '.github/workflows/dast.yml'
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  zap:
+    name: Auth smoke tests + OWASP ZAP baseline
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
+        with:
+          global-json-file: global.json
+
+      - name: Build services
+        run: |
+          dotnet build src/Procesos.TokenService -c Release
+          dotnet build src/Procesos.McpServer -c Release
+
+      - name: Generate ephemeral secrets
+        run: |
+          SIGNING_KEY=$(openssl rand -base64 48)
+          CLIENT_SECRET=$(openssl rand -base64 32)
+          echo "::add-mask::$SIGNING_KEY"
+          echo "::add-mask::$CLIENT_SECRET"
+          echo "SIGNING_KEY=$SIGNING_KEY" >> "$GITHUB_ENV"
+          echo "CLIENT_SECRET=$CLIENT_SECRET" >> "$GITHUB_ENV"
+
+      - name: Start TokenService (:5061) and McpServer (:5071)
+        env:
+          ASPNETCORE_ENVIRONMENT: Production
+        run: |
+          Security__Jwt__SigningKey="$SIGNING_KEY" \
+          Security__RegisteredClients__Clients__0__ClientSecret="$CLIENT_SECRET" \
+          nohup dotnet run --no-build -c Release --project src/Procesos.TokenService --urls http://localhost:5061 > tokenservice.log 2>&1 &
+
+          Security__Jwt__SigningKey="$SIGNING_KEY" \
+          ConnectionStrings__ProcesosDb="Server=localhost;Database=unused;User Id=x;Password=x;TrustServerCertificate=True" \
+          DocumentStorage__RootPath="$RUNNER_TEMP/docs" \
+          nohup dotnet run --no-build -c Release --project src/Procesos.McpServer --urls http://localhost:5071 > mcpserver.log 2>&1 &
+
+          for port in 5061 5071; do
+            for i in $(seq 1 60); do
+              if curl -s -o /dev/null "http://localhost:$port/"; then echo "port $port up"; break; fi
+              sleep 1
+            done
+          done
+
+      - name: Black-box auth smoke tests
+        run: |
+          set -euo pipefail
+          code() { curl -s -o /dev/null -w '%{http_code}' "$@"; }
+
+          # Wrong secret -> 401
+          test "$(code -X POST http://localhost:5061/connect/token \
+            -d grant_type=client_credentials -d client_id=chatapi-client -d client_secret=wrong)" = "401"
+
+          # Unsupported grant -> 400
+          test "$(code -X POST http://localhost:5061/connect/token \
+            -d grant_type=password -d client_id=chatapi-client -d client_secret=x)" = "400"
+
+          # MCP without token -> 401
+          test "$(code -X POST http://localhost:5071/ -H 'Content-Type: application/json' \
+            -H 'Accept: application/json, text/event-stream' -d '{}')" = "401"
+
+          # Valid token -> MCP initialize 200
+          TOKEN=$(curl -s -X POST http://localhost:5061/connect/token \
+            -d grant_type=client_credentials -d client_id=chatapi-client \
+            --data-urlencode "client_secret=$CLIENT_SECRET" -d scope=mcp.tools.invoke | jq -r .access_token)
+          echo "::add-mask::$TOKEN"
+          test "$(code -X POST http://localhost:5071/ -H "Authorization: Bearer $TOKEN" \
+            -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+            -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"dast","version":"1"}}}')" = "200"
+
+          # No CORS on McpServer
+          if curl -s -D - -o /dev/null -X OPTIONS http://localhost:5071/ -H 'Origin: http://evil.example' \
+              -H 'Access-Control-Request-Method: POST' | grep -qi 'access-control-allow-origin'; then
+            echo "::error::McpServer returned CORS headers"; exit 1
+          fi
+
+          # Rate limit on token endpoint -> 429 after 30 requests/min
+          last=""
+          for i in $(seq 1 35); do
+            last=$(code -X POST http://localhost:5061/connect/token -d grant_type=client_credentials -d client_id=x -d client_secret=y)
+          done
+          test "$last" = "429"
+          echo "All DAST smoke checks passed" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: ZAP baseline — TokenService
+        uses: zaproxy/action-baseline@7c4deb10e6261301961c86d65d54a516394f9aed # v0.14.0
+        with:
+          target: http://localhost:5061/connect/token
+          allow_issue_writing: false
+          fail_action: false
+          artifact_name: zap-tokenservice
+
+      - name: ZAP baseline — McpServer
+        uses: zaproxy/action-baseline@7c4deb10e6261301961c86d65d54a516394f9aed # v0.14.0
+        with:
+          target: http://localhost:5071/
+          allow_issue_writing: false
+          fail_action: false
+          artifact_name: zap-mcpserver
+
+      - name: Service logs
+        if: always()
+        run: |
+          echo "--- tokenservice ---"; tail -n 100 tokenservice.log || true
+          echo "--- mcpserver ---";   tail -n 100 mcpserver.log || true

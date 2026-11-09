@@ -1,0 +1,8 @@
+# Test-specific analyzer settings (inherits from the root .editorconfig).
+[*.cs]
+# Test names use Method_Scenario_Expectation with underscores.
+dotnet_diagnostic.CA1707.severity = none
+# ConfigureAwait is irrelevant in xUnit tests.
+dotnet_diagnostic.CA2007.severity = none
+# Test literals are not localized.
+dotnet_diagnostic.CA1303.severity = none

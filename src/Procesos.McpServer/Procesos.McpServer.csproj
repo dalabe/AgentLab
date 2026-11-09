@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Procesos.Data\Procesos.Data.csproj" />
+    <ProjectReference Include="..\Procesos.Security\Procesos.Security.csproj" />
+    <ProjectReference Include="..\Procesos.ServiceDefaults\Procesos.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ModelContextProtocol.AspNetCore" Version="2.4.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>04f44dc8-0a29-4606-91e7-aae21203dfd3</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

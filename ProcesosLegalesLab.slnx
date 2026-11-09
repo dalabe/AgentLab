@@ -1,0 +1,24 @@
+<Solution>
+  <Folder Name="/Aspire/">
+    <Project Path="src/Procesos.AppHost/Procesos.AppHost.csproj" />
+    <Project Path="src/Procesos.ServiceDefaults/Procesos.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/Mcp/">
+    <Project Path="src/Procesos.McpClientCore/Procesos.McpClientCore.csproj" />
+    <Project Path="src/Procesos.McpServer/Procesos.McpServer.csproj" />
+  </Folder>
+  <Folder Name="/Services/">
+    <Project Path="src/Procesos.BackOffice.Api/Procesos.BackOffice.Api.csproj" />
+    <Project Path="src/Procesos.ChatApi/Procesos.ChatApi.csproj" />
+    <Project Path="src/Procesos.TokenService/Procesos.TokenService.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="src/Procesos.Data/Procesos.Data.csproj" />
+    <Project Path="src/Procesos.Llm/Procesos.Llm.csproj" />
+    <Project Path="src/Procesos.Security/Procesos.Security.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="tests/Procesos.IntegrationTests/Procesos.IntegrationTests.csproj" />
+    <Project Path="tests/Procesos.UnitTests/Procesos.UnitTests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,17 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2022-00276
+Tipo de documento:  Resolucion
+Nombre de archivo:  Acta de partición y adjudicación de la herencia.pdf
+Proceso:            Civil - Archivado
+Entidad/Juzgado:    Notaría 15 de Bogotá
+Parte:              Ana Sofía Martínez Cárdenas (doc. identidad 1040506070)
+Fecha de carga:     2022-05-03
+=====================================================================
+RESOLUCIÓN emitida dentro del proceso EXP-2022-00276 por Notaría 15 de Bogotá,
+en relación con:
+
+Proceso de sucesión intestada por el fallecimiento del padre de la solicitante, con tres herederos reconocidos.
+
+Estado actual del trámite: Archivado. Sucesión liquidada y protocolizada; proceso archivado tras registro de la partición en la Oficina de Registro.

@@ -1,0 +1,22 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2026-00067
+Tipo de documento:  Demanda
+Nombre de archivo:  Demanda de responsabilidad civil extracontractual.pdf
+Proceso:            Civil - EnRevision
+Entidad/Juzgado:    Juzgado 9 Civil del Circuito de Bogotá
+Parte:              Jorge Luis Castañeda Mora (doc. identidad 1090102030)
+Fecha de carga:     2026-02-09
+=====================================================================
+Señor Juez / Despacho (Juzgado 9 Civil del Circuito de Bogotá):
+
+Jorge Luis Castañeda Mora, identificado(a) con documento de identidad No. 1090102030,
+por medio del presente escrito formula demanda dentro del proceso EXP-2026-00067,
+con fundamento en los siguientes hechos:
+
+Demanda de responsabilidad civil extracontractual por daños materiales derivados de una inundación proveniente de un predio vecino.
+
+Con base en lo anterior, se solicita al despacho admitir la presente demanda, dar el trámite
+legal correspondiente y, en su oportunidad, proferir sentencia favorable a las pretensiones
+de la parte demandante.

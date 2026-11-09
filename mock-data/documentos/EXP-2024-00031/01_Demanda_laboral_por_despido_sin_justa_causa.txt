@@ -1,0 +1,22 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2024-00031
+Tipo de documento:  Demanda
+Nombre de archivo:  Demanda laboral por despido sin justa causa.pdf
+Proceso:            Laboral - Activo
+Entidad/Juzgado:    Juzgado 4 Laboral del Circuito de Medellín
+Parte:              María Fernanda Gómez Rivas (doc. identidad 1020304050)
+Fecha de carga:     2024-03-05
+=====================================================================
+Señor Juez / Despacho (Juzgado 4 Laboral del Circuito de Medellín):
+
+María Fernanda Gómez Rivas, identificado(a) con documento de identidad No. 1020304050,
+por medio del presente escrito formula demanda dentro del proceso EXP-2024-00031,
+con fundamento en los siguientes hechos:
+
+Demanda por despido sin justa causa, solicitando reintegro e indemnización equivalente a 90 días de salario.
+
+Con base en lo anterior, se solicita al despacho admitir la presente demanda, dar el trámite
+legal correspondiente y, en su oportunidad, proferir sentencia favorable a las pretensiones
+de la parte demandante.
