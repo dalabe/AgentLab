@@ -1,0 +1,8 @@
+# Default owner for everything in the repository.
+*                       @dalabe
+
+# Security-sensitive areas: changes require owner review.
+/src/Procesos.Security/ @dalabe
+/src/Procesos.TokenService/ @dalabe
+/.github/workflows/     @dalabe
+/specs/adr/             @dalabe

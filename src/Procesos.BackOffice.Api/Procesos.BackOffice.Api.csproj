@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Procesos.Data\Procesos.Data.csproj" />
+    <ProjectReference Include="..\Procesos.ServiceDefaults\Procesos.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>ce232c3b-0c2a-43e8-a584-9d163fbfc152</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

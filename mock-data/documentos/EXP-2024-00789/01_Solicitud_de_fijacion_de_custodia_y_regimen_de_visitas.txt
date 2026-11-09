@@ -1,0 +1,22 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2024-00789
+Tipo de documento:  Demanda
+Nombre de archivo:  Solicitud de fijación de custodia y régimen de visitas.pdf
+Proceso:            Familia - Activo
+Entidad/Juzgado:    Comisaría de Familia de Chapinero
+Parte:              Ana Sofía Martínez Cárdenas (doc. identidad 1040506070)
+Fecha de carga:     2024-08-01
+=====================================================================
+Señor Juez / Despacho (Comisaría de Familia de Chapinero):
+
+Ana Sofía Martínez Cárdenas, identificado(a) con documento de identidad No. 1040506070,
+por medio del presente escrito formula demanda dentro del proceso EXP-2024-00789,
+con fundamento en los siguientes hechos:
+
+Proceso de fijación de custodia y régimen de visitas respecto de un menor de edad, ante desacuerdo entre los padres.
+
+Con base en lo anterior, se solicita al despacho admitir la presente demanda, dar el trámite
+legal correspondiente y, en su oportunidad, proferir sentencia favorable a las pretensiones
+de la parte demandante.

@@ -1,0 +1,22 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2023-00450
+Tipo de documento:  Demanda
+Nombre de archivo:  Demanda de impugnación de asamblea de socios.pdf
+Proceso:            Comercial - Cerrado
+Entidad/Juzgado:    Superintendencia de Sociedades - Bogotá
+Parte:              Jorge Luis Castañeda Mora (doc. identidad 1090102030)
+Fecha de carga:     2023-01-20
+=====================================================================
+Señor Juez / Despacho (Superintendencia de Sociedades - Bogotá):
+
+Jorge Luis Castañeda Mora, identificado(a) con documento de identidad No. 1090102030,
+por medio del presente escrito formula demanda dentro del proceso EXP-2023-00450,
+con fundamento en los siguientes hechos:
+
+Conflicto societario entre socios de una SAS por exclusión indebida de un socio minoritario; resuelto mediante acuerdo de recompra de participaciones.
+
+Con base en lo anterior, se solicita al despacho admitir la presente demanda, dar el trámite
+legal correspondiente y, en su oportunidad, proferir sentencia favorable a las pretensiones
+de la parte demandante.

@@ -1,0 +1,18 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2024-00552
+Tipo de documento:  Prueba
+Nombre de archivo:  Informe de policía judicial y registro fotográfico.pdf
+Proceso:            Penal - EnRevision
+Entidad/Juzgado:    Fiscalía 23 Seccional - Bogotá
+Parte:              Juan Carlos Pérez Londoño (doc. identidad 1030405060)
+Fecha de carga:     2024-06-22
+=====================================================================
+Material probatorio aportado dentro del proceso EXP-2024-00552, relacionado con
+los hechos objeto de controversia:
+
+Denuncia por hurto calificado de vehículo. Investigación en etapa de instrucción, pendiente de imputación formal.
+
+Este documento se incorpora al expediente como soporte de las afirmaciones de la parte que
+lo presenta, para que sea valorado por el despacho/entidad competente.

@@ -1,0 +1,40 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - ChatApi
+        - McpServer
+        - TokenService
+        - BackOffice.Api
+        - procesos-chat-web
+        - procesos-backoffice-web
+        - AppHost / tooling
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: 1. Start AppHost 2. Ask "…" 3. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual behaviour
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: Windows 11, .NET 10.0.401, Node 24, LLM provider Mock/Anthropic
+  - type: markdown
+    attributes:
+      value: "**Security issues**: do not file here — use private vulnerability reporting (see SECURITY.md)."

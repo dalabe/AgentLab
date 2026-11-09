@@ -1,0 +1,78 @@
+<div class="chat-shell">
+  <header class="chat-header">
+    <div>
+      <h1>Procesos Legales — Chat</h1>
+      <p class="subtitle">
+        Pregunta en lenguaje natural por una persona o un proceso (expediente).
+      </p>
+    </div>
+    <button type="button" class="ghost-btn" (click)="nuevaConversacion()">
+      Nueva conversación
+    </button>
+  </header>
+
+  <section class="messages" aria-live="polite">
+    @if (messages().length === 0) {
+      <div class="empty-state">
+        <p>Aún no hay mensajes. Prueba con una de estas preguntas:</p>
+        <ul class="examples">
+          @for (ejemplo of ejemplos; track ejemplo) {
+            <li>
+              <button type="button" class="example-btn" (click)="usarEjemplo(ejemplo)">
+                {{ ejemplo }}
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+
+    @for (mensaje of messages(); track $index) {
+      <article
+        class="bubble"
+        [class.bubble-user]="mensaje.role === 'user'"
+        [class.bubble-error]="mensaje.isError"
+      >
+        <div class="bubble-role">{{ mensaje.role === 'user' ? 'Tú' : 'Asistente' }}</div>
+        <p class="bubble-text">{{ mensaje.text }}</p>
+
+        @if (mensaje.toolCalls && mensaje.toolCalls.length > 0) {
+          <details class="tool-calls">
+            <summary>
+              Qué hizo ({{ mensaje.toolCalls.length }} llamada(s) a herramientas MCP)
+            </summary>
+            @for (tc of mensaje.toolCalls; track $index) {
+              <div class="tool-call">
+                <div class="tool-call-name">{{ tc.name }}</div>
+                <div class="tool-call-args">Args: {{ formatearArgumentos(tc.arguments) }}</div>
+                @if (tc.result) {
+                  <pre class="tool-call-result">{{ tc.result }}</pre>
+                }
+              </div>
+            }
+          </details>
+        }
+      </article>
+    }
+
+    @if (sending()) {
+      <article class="bubble">
+        <div class="bubble-role">Asistente</div>
+        <p class="bubble-text typing">Pensando…</p>
+      </article>
+    }
+  </section>
+
+  <form class="composer" (ngSubmit)="enviar()">
+    <input
+      type="text"
+      name="message"
+      [ngModel]="draft()"
+      (ngModelChange)="draft.set($event)"
+      placeholder="Escribe tu pregunta sobre un proceso o una persona…"
+      [disabled]="sending()"
+      autocomplete="off"
+    />
+    <button type="submit" [disabled]="sending() || draft().trim().length === 0">Enviar</button>
+  </form>
+</div>

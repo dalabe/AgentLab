@@ -1,0 +1,14 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2024-00552
+Tipo de documento:  Otro
+Nombre de archivo:  Denuncia penal por hurto calificado.pdf
+Proceso:            Penal - EnRevision
+Entidad/Juzgado:    Fiscalía 23 Seccional - Bogotá
+Parte:              Juan Carlos Pérez Londoño (doc. identidad 1030405060)
+Fecha de carga:     2024-06-22
+=====================================================================
+Documento asociado al proceso EXP-2024-00552, relacionado con:
+
+Denuncia por hurto calificado de vehículo. Investigación en etapa de instrucción, pendiente de imputación formal.

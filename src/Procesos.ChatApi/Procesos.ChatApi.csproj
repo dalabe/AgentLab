@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Procesos.Llm\Procesos.Llm.csproj" />
+    <ProjectReference Include="..\Procesos.McpClientCore\Procesos.McpClientCore.csproj" />
+    <ProjectReference Include="..\Procesos.Security\Procesos.Security.csproj" />
+    <ProjectReference Include="..\Procesos.ServiceDefaults\Procesos.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>a7aa8a71-6662-4ffe-a007-f13996060c2d</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

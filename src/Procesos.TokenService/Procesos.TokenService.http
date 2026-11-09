@@ -1,0 +1,21 @@
+@baseUrl = http://localhost:5061
+
+### Obtener un access token de servicio (flujo OAuth2 client_credentials).
+### Reemplace <CLIENT_SECRET> por el valor real configurado en User Secrets
+### (ver docs/RUNBOOK.md -> "Secretos ya configurados").
+POST {{baseUrl}}/connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=chatapi-client&client_secret=<CLIENT_SECRET>&scope=mcp.tools.invoke
+
+### Secreto inválido: debe responder 401 invalid_client.
+POST {{baseUrl}}/connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=chatapi-client&client_secret=incorrecto&scope=mcp.tools.invoke
+
+### Cliente desconocido: debe responder 401 invalid_client (sin filtrar que el cliente no existe).
+POST {{baseUrl}}/connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=cliente-inexistente&client_secret=cualquiera&scope=mcp.tools.invoke

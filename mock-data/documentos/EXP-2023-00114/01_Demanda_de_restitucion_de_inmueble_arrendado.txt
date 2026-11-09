@@ -1,0 +1,22 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2023-00114
+Tipo de documento:  Demanda
+Nombre de archivo:  Demanda de restitución de inmueble arrendado.pdf
+Proceso:            Civil - Cerrado
+Entidad/Juzgado:    Juzgado 12 Civil Municipal de Bogotá
+Parte:              María Fernanda Gómez Rivas (doc. identidad 1020304050)
+Fecha de carga:     2023-02-10
+=====================================================================
+Señor Juez / Despacho (Juzgado 12 Civil Municipal de Bogotá):
+
+María Fernanda Gómez Rivas, identificado(a) con documento de identidad No. 1020304050,
+por medio del presente escrito formula demanda dentro del proceso EXP-2023-00114,
+con fundamento en los siguientes hechos:
+
+Proceso de restitución de inmueble arrendado por incumplimiento en el pago de cánones durante tres meses consecutivos.
+
+Con base en lo anterior, se solicita al despacho admitir la presente demanda, dar el trámite
+legal correspondiente y, en su oportunidad, proferir sentencia favorable a las pretensiones
+de la parte demandante.

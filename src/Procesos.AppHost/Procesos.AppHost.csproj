@@ -1,0 +1,19 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.6.4">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Procesos.McpServer\Procesos.McpServer.csproj" />
+    <ProjectReference Include="..\Procesos.TokenService\Procesos.TokenService.csproj" />
+    <ProjectReference Include="..\Procesos.ChatApi\Procesos.ChatApi.csproj" />
+    <ProjectReference Include="..\Procesos.BackOffice.Api\Procesos.BackOffice.Api.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AspireUseCliBundle>true</AspireUseCliBundle>
+    <UserSecretsId>d641afca-1b18-4e51-a555-94c3a56bb10a</UserSecretsId>
+  </PropertyGroup>
+
+</Project>
