@@ -1,0 +1,37 @@
+# ===== .NET =====
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.vscode/
+*.binlog
+
+# ===== Node / Angular =====
+node_modules/
+dist/
+.angular/
+npm-debug.log*
+
+# ===== Aspire =====
+**/.aspire/
+
+# ===== OS / editor noise =====
+.DS_Store
+Thumbs.db
+
+# ===== Nunca versionar secretos =====
+*.pfx
+*.pem
+appsettings.*.local.json
+
+# ===== Tests / coverage =====
+TestResults/
+coverage/
+*.trx
+*.coverage
+*.cobertura.xml
+
+# ===== IDEs =====
+.idea/
+*.DotSettings.user

@@ -1,0 +1,18 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2025-00310
+Tipo de documento:  Contrato
+Nombre de archivo:  Contrato de arrendamiento de local comercial.pdf
+Proceso:            Civil - Activo
+Entidad/Juzgado:    Juzgado 3 Civil del Circuito de Barranquilla
+Parte:              Diana Marcela Suárez Peña (doc. identidad 1080901020)
+Fecha de carga:     2025-04-07
+=====================================================================
+CONTRATO relacionado con el proceso EXP-2025-00310, celebrado entre las partes
+involucradas, cuyo objeto y antecedentes dieron origen a la controversia descrita a continuación:
+
+Proceso declarativo por incumplimiento de cláusulas de un contrato de arrendamiento de local comercial, incluyendo daños al inmueble.
+
+Las partes se obligan a lo aquí estipulado, sujeto a las cláusulas pactadas y a la normativa
+aplicable en la materia.

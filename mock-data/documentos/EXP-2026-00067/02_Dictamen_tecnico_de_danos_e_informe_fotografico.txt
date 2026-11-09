@@ -1,0 +1,18 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2026-00067
+Tipo de documento:  Prueba
+Nombre de archivo:  Dictamen técnico de daños e informe fotográfico.pdf
+Proceso:            Civil - EnRevision
+Entidad/Juzgado:    Juzgado 9 Civil del Circuito de Bogotá
+Parte:              Jorge Luis Castañeda Mora (doc. identidad 1090102030)
+Fecha de carga:     2026-02-09
+=====================================================================
+Material probatorio aportado dentro del proceso EXP-2026-00067, relacionado con
+los hechos objeto de controversia:
+
+Demanda de responsabilidad civil extracontractual por daños materiales derivados de una inundación proveniente de un predio vecino.
+
+Este documento se incorpora al expediente como soporte de las afirmaciones de la parte que
+lo presenta, para que sea valorado por el despacho/entidad competente.

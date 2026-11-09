@@ -1,0 +1,26 @@
+.back-link {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #4338ca;
+  text-decoration: none;
+}
+
+.persona-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 480px;
+}
+
+.error {
+  color: #991b1b;
+}
+
+.procesos-section {
+  margin-top: 32px;
+  max-width: 600px;
+}
+
+.empty {
+  color: #6b7280;
+}

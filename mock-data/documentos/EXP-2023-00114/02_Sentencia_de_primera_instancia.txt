@@ -1,0 +1,20 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2023-00114
+Tipo de documento:  Sentencia
+Nombre de archivo:  Sentencia de primera instancia.pdf
+Proceso:            Civil - Cerrado
+Entidad/Juzgado:    Juzgado 12 Civil Municipal de Bogotá
+Parte:              María Fernanda Gómez Rivas (doc. identidad 1020304050)
+Fecha de carga:     2023-02-10
+=====================================================================
+El Juzgado 12 Civil Municipal de Bogotá, administrando justicia en nombre de la República, dentro del
+proceso EXP-2023-00114 y una vez analizados los hechos relativos a:
+
+Proceso de restitución de inmueble arrendado por incumplimiento en el pago de cánones durante tres meses consecutivos.
+
+RESUELVE: proferir la presente decisión de fondo conforme a lo debatido y probado en el
+proceso, quedando notificada a las partes en la forma legalmente prevista.
+
+Nota del caso: Proceso cerrado con restitución efectiva del inmueble y acuerdo de pago de cánones adeudados.

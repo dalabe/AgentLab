@@ -1,0 +1,18 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2024-00031
+Tipo de documento:  Prueba
+Nombre de archivo:  Certificaciones laborales y comprobantes de pago.pdf
+Proceso:            Laboral - Activo
+Entidad/Juzgado:    Juzgado 4 Laboral del Circuito de Medellín
+Parte:              María Fernanda Gómez Rivas (doc. identidad 1020304050)
+Fecha de carga:     2024-03-05
+=====================================================================
+Material probatorio aportado dentro del proceso EXP-2024-00031, relacionado con
+los hechos objeto de controversia:
+
+Demanda por despido sin justa causa, solicitando reintegro e indemnización equivalente a 90 días de salario.
+
+Este documento se incorpora al expediente como soporte de las afirmaciones de la parte que
+lo presenta, para que sea valorado por el despacho/entidad competente.

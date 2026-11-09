@@ -1,0 +1,22 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2023-00901
+Tipo de documento:  Demanda
+Nombre de archivo:  Demanda por accidente de trabajo.pdf
+Proceso:            Laboral - Cerrado
+Entidad/Juzgado:    Juzgado 7 Laboral del Circuito de Cali
+Parte:              Laura Valentina Torres Jiménez (doc. identidad 1060708090)
+Fecha de carga:     2023-03-29
+=====================================================================
+Señor Juez / Despacho (Juzgado 7 Laboral del Circuito de Cali):
+
+Laura Valentina Torres Jiménez, identificado(a) con documento de identidad No. 1060708090,
+por medio del presente escrito formula demanda dentro del proceso EXP-2023-00901,
+con fundamento en los siguientes hechos:
+
+Demanda por indemnización por accidente de trabajo con incapacidad permanente parcial reconocida por la ARL.
+
+Con base en lo anterior, se solicita al despacho admitir la presente demanda, dar el trámite
+legal correspondiente y, en su oportunidad, proferir sentencia favorable a las pretensiones
+de la parte demandante.

@@ -1,0 +1,69 @@
+@baseUrl = http://localhost:5080
+
+### Listar personas (datos mock sembrados al primer arranque)
+GET {{baseUrl}}/api/personas
+
+### Buscar personas por nombre o documento de identidad
+GET {{baseUrl}}/api/personas?q=Perez
+
+### Detalle de una persona (incluye sus procesos)
+GET {{baseUrl}}/api/personas/1
+
+### Crear una persona
+POST {{baseUrl}}/api/personas
+Content-Type: application/json
+
+{
+  "documentoIdentidad": "9999999999",
+  "nombres": "Prueba",
+  "apellidos": "Manual",
+  "email": "prueba@example.com",
+  "telefono": "+57 300 000 0000",
+  "fechaNacimiento": "1990-01-01"
+}
+
+### Listar procesos, con filtros opcionales (personaId, tipo, estado, q)
+GET {{baseUrl}}/api/procesos?estado=Activo
+
+### Detalle de un proceso por Id (incluye persona, documentos y eventos)
+GET {{baseUrl}}/api/procesos/2
+
+### Detalle de un proceso por número de expediente
+GET {{baseUrl}}/api/procesos/by-expediente/EXP-2024-00031
+
+### Crear un proceso
+POST {{baseUrl}}/api/procesos
+Content-Type: application/json
+
+{
+  "numeroExpediente": "EXP-2026-99999",
+  "personaId": 1,
+  "tipo": "Civil",
+  "estado": "Activo",
+  "entidadOJuzgado": "Juzgado de prueba",
+  "descripcion": "Proceso de prueba creado desde Procesos.BackOffice.Api.http",
+  "fechaInicio": "2026-01-01",
+  "notas": null
+}
+
+### Listar documentos de un proceso
+GET {{baseUrl}}/api/procesos/2/documentos
+
+### Descargar el contenido físico de un documento (texto plano en este laboratorio)
+GET {{baseUrl}}/api/documentos/3/contenido
+
+### Listar eventos (línea de tiempo) de un proceso
+GET {{baseUrl}}/api/procesos/2/eventos
+
+### Agregar un evento a la línea de tiempo de un proceso
+POST {{baseUrl}}/api/procesos/2/eventos
+Content-Type: application/json
+
+{
+  "fecha": "2026-11-09",
+  "tipo": "Otro",
+  "descripcion": "Evento de prueba creado desde Procesos.BackOffice.Api.http"
+}
+
+### Nota: la subida de documentos (POST /api/procesos/{id}/documentos) es multipart/form-data
+### (archivo + nombre + tipo), más fácil de probar desde el BackOffice Angular que desde .http.

@@ -1,0 +1,69 @@
+<div class="page-header">
+  <h1>Personas</h1>
+  <a mat-flat-button color="primary" routerLink="/personas/nuevo">
+    <mat-icon>add</mat-icon>
+    Nueva persona
+  </a>
+</div>
+
+<mat-form-field class="search-field" appearance="outline">
+  <mat-label>Buscar por nombre o documento de identidad</mat-label>
+  <input
+    matInput
+    [ngModel]="busqueda()"
+    (ngModelChange)="busqueda.set($event)"
+    (keyup.enter)="cargar()"
+  />
+</mat-form-field>
+
+@if (cargando()) {
+  <p>Cargando…</p>
+} @else {
+  <table mat-table [dataSource]="personas()" class="full-width-table">
+    <ng-container matColumnDef="nombreCompleto">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let p">{{ p.nombreCompleto }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="documentoIdentidad">
+      <th mat-header-cell *matHeaderCellDef>Documento</th>
+      <td mat-cell *matCellDef="let p">{{ p.documentoIdentidad }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let p">{{ p.email || '—' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono">
+      <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+      <td mat-cell *matCellDef="let p">{{ p.telefono || '—' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cantidadProcesos">
+      <th mat-header-cell *matHeaderCellDef>Procesos</th>
+      <td mat-cell *matCellDef="let p">{{ p.cantidadProcesos }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let p">
+        <button mat-icon-button (click)="eliminar(p, $event)" aria-label="Eliminar">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: columnas"
+      (click)="abrir(row)"
+      class="clickable-row"
+    ></tr>
+  </table>
+
+  @if (personas().length === 0) {
+    <p class="empty">No hay personas que coincidan con la búsqueda.</p>
+  }
+}

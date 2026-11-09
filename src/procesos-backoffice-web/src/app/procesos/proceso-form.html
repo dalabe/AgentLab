@@ -1,0 +1,169 @@
+<a routerLink="/procesos" class="back-link">← Volver a procesos</a>
+
+<h1>{{ esNuevo ? 'Nuevo proceso' : 'Editar proceso' }}</h1>
+
+@if (cargando()) {
+  <mat-spinner diameter="32" />
+} @else {
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="proceso-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Número de expediente</mat-label>
+      <input matInput formControlName="numeroExpediente" placeholder="EXP-2026-00001" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Persona</mat-label>
+      <mat-select formControlName="personaId">
+        @for (p of personas(); track p.id) {
+          <mat-option [value]="p.id"
+            >{{ p.nombreCompleto }} ({{ p.documentoIdentidad }})</mat-option
+          >
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="tipo">
+          @for (t of tipos; track t) {
+            <mat-option [value]="t">{{ t }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="estado">
+          @for (e of estados; track e) {
+            <mat-option [value]="e">{{ e }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Entidad / Juzgado</mat-label>
+      <input matInput formControlName="entidadOJuzgado" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="descripcion" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha de inicio</mat-label>
+      <input matInput type="date" formControlName="fechaInicio" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Notas</mat-label>
+      <textarea matInput formControlName="notas" rows="2"></textarea>
+    </mat-form-field>
+
+    @if (errorMensaje()) {
+      <p class="error">{{ errorMensaje() }}</p>
+    }
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="guardando()">
+      {{ guardando() ? 'Guardando…' : 'Guardar' }}
+    </button>
+  </form>
+
+  @if (!esNuevo) {
+    <section class="sub-section">
+      <h2>Documentos</h2>
+
+      @if (documentos().length === 0) {
+        <p class="empty">Este proceso no tiene documentos.</p>
+      } @else {
+        <ul class="doc-list">
+          @for (doc of documentos(); track doc.id) {
+            <li>
+              <a [href]="descargarUrl(doc.id)" target="_blank" rel="noopener">{{ doc.nombre }}</a>
+              <span class="doc-meta"
+                >{{ doc.tipo }} · {{ (doc.tamanoBytes / 1024).toFixed(1) }} KB</span
+              >
+              <button
+                mat-icon-button
+                (click)="eliminarDocumento(doc.id)"
+                aria-label="Eliminar documento"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </li>
+          }
+        </ul>
+      }
+
+      <form [formGroup]="docForm" (ngSubmit)="subirDocumento()" class="inline-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre del documento</mat-label>
+          <input matInput formControlName="nombre" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="tipo">
+            @for (t of tiposDocumento; track t) {
+              <mat-option [value]="t">{{ t }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <input type="file" (change)="onArchivoSeleccionado($event)" />
+
+        <button mat-stroked-button type="submit" [disabled]="subiendoDocumento()">
+          {{ subiendoDocumento() ? 'Subiendo…' : 'Subir documento' }}
+        </button>
+      </form>
+    </section>
+
+    <section class="sub-section">
+      <h2>Línea de tiempo (eventos)</h2>
+
+      @if (eventos().length === 0) {
+        <p class="empty">Este proceso no tiene eventos registrados.</p>
+      } @else {
+        <ul class="timeline">
+          @for (ev of eventos(); track ev.id) {
+            <li>
+              <span class="timeline-fecha">{{ ev.fecha }}</span>
+              <span class="timeline-tipo">{{ ev.tipo }}</span>
+              <span class="timeline-desc">{{ ev.descripcion }}</span>
+              <button mat-icon-button (click)="eliminarEvento(ev.id)" aria-label="Eliminar evento">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </li>
+          }
+        </ul>
+      }
+
+      <form [formGroup]="eventoForm" (ngSubmit)="agregarEvento()" class="inline-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha</mat-label>
+          <input matInput type="date" formControlName="fecha" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="tipo">
+            @for (t of tiposEvento; track t) {
+              <mat-option [value]="t">{{ t }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="desc-field">
+          <mat-label>Descripción</mat-label>
+          <input matInput formControlName="descripcion" />
+        </mat-form-field>
+
+        <button mat-stroked-button type="submit" [disabled]="guardandoEvento()">
+          {{ guardandoEvento() ? 'Agregando…' : 'Agregar evento' }}
+        </button>
+      </form>
+    </section>
+  }
+}

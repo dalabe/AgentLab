@@ -1,0 +1,17 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2026-00019
+Tipo de documento:  Resolucion
+Nombre de archivo:  Resolución que decreta medida cautelar de embargo de salario.pdf
+Proceso:            Familia - Activo
+Entidad/Juzgado:    Comisaría de Familia de Kennedy
+Parte:              Diana Marcela Suárez Peña (doc. identidad 1080901020)
+Fecha de carga:     2026-01-15
+=====================================================================
+RESOLUCIÓN emitida dentro del proceso EXP-2026-00019 por Comisaría de Familia de Kennedy,
+en relación con:
+
+Proceso de fijación de cuota de alimentos a favor de dos menores de edad, ante incumplimiento reiterado del obligado.
+
+Estado actual del trámite: Activo. Se decretó embargo parcial de salario como medida cautelar mientras se resuelve el fondo.

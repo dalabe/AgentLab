@@ -1,0 +1,14 @@
+=====================================================================
+DOCUMENTO MOCK - LABORATORIO MCP (contenido ficticio, solo para pruebas)
+=====================================================================
+Expediente:        EXP-2025-00187
+Tipo de documento:  Otro
+Nombre de archivo:  Recurso de reposición contra comparendo.pdf
+Proceso:            Administrativo - EnRevision
+Entidad/Juzgado:    Secretaría de Movilidad de Cali
+Parte:              Laura Valentina Torres Jiménez (doc. identidad 1060708090)
+Fecha de carga:     2025-06-11
+=====================================================================
+Documento asociado al proceso EXP-2025-00187, relacionado con:
+
+Recurso de reposición contra una multa de tránsito impuesta por presunto exceso de velocidad, cuestionando la calibración del equipo de medición.
