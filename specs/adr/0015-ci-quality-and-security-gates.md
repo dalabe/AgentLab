@@ -31,5 +31,8 @@ Workflows declare least-privilege `permissions:` and pin every action to a full 
 
 - Positive: consistent automated verification; SARIF results in the GitHub Security tab.
 - Negative: DB-backed flows are not exercised on Linux runners (LocalDB, ADR-0007).
-- Follow-up (repository settings, manual): branch protection on `main` requiring `ci` and
-  `codeql`; enable secret scanning push protection and private vulnerability reporting.
+- Repository settings: the `Protect main` ruleset blocks deletion and force pushes, requires a
+  pull request (0 approvals, single maintainer) and an up-to-date branch, and requires every
+  blocking check above plus the three CodeQL `Analyze (…)` jobs. DAST is not required because it
+  is path-filtered and would never report on unrelated PRs. No bypass actors.
+- Secret scanning push protection is enabled. Follow-up (manual): private vulnerability reporting.
