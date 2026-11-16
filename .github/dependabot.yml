@@ -38,6 +38,11 @@ updates:
         patterns: ['@angular/*', '@angular-devkit/*']
       npm-minor-patch:
         update-types: [minor, patch]
+    # The Angular compiler pins a narrow TypeScript range (Angular 22: >=6.0 <6.1). TypeScript
+    # majors/minors move together with an Angular major upgrade, never on their own.
+    ignore:
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
 
   - package-ecosystem: github-actions
     directory: /

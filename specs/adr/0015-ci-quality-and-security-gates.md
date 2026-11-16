@@ -17,7 +17,7 @@ quality and security before it reaches `main`.
 | Formatting / code style | `dotnet format --verify-no-changes`, `.editorconfig` | `ci.yml` | push / PR | yes |
 | .NET analyzers | `AnalysisLevel=latest-recommended`, `EnforceCodeStyleInBuild` (`Directory.Build.props`) | `ci.yml` | push / PR | yes |
 | Angular build + unit tests | `ng build`, `ng test` (Vitest) | `ci.yml` | push / PR | yes |
-| SAST | GitHub CodeQL (`csharp`, `javascript-typescript`, `actions`; `security-extended`) | `codeql.yml` | push / PR / weekly | alerts |
+| SAST | GitHub CodeQL (`csharp`, `javascript-typescript`, `actions`; `security-extended`; build-mode `none`, so generated code under `obj/` is not analysed) | `codeql.yml` | push / PR / weekly | alerts |
 | Secret scanning | Gitleaks (full history) | `security.yml` | push / PR | yes |
 | Vulnerable dependencies | `dotnet list package --vulnerable`, `npm audit --audit-level=high` | `security.yml` | push / PR / weekly | yes |
 | Dependency review | `actions/dependency-review-action` (fail on high) | `security.yml` | PR | yes |

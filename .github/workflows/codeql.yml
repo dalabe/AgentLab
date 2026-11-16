@@ -26,8 +26,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          # build-mode none: analyse the C# sources in the repo only. With a manual build CodeQL also
+          # extracts source-generator output under obj/ (paths-ignore does not apply to compiled
+          # extraction), producing unfixable alerts in generated code.
           - language: csharp
-            build-mode: manual
+            build-mode: none
           - language: javascript-typescript
             build-mode: none
           - language: actions
@@ -35,6 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      # The .NET SDK lets build-mode none restore NuGet dependencies for better type resolution.
       - if: matrix.language == 'csharp'
         uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
@@ -51,10 +55,6 @@ jobs:
               - '**/dist/**'
               - '**/obj/**'
               - 'src/Procesos.Data/Migrations/**'
-
-      - if: matrix.build-mode == 'manual'
-        name: Build .NET solution
-        run: dotnet build ProcesosLegalesLab.slnx -c Release
 
       - uses: github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
         with:
