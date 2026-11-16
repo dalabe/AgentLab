@@ -11,6 +11,19 @@ updates:
     groups:
       dotnet-minor-patch:
         update-types: [minor, patch]
+    # The solution targets .NET 10 (LTS). Runtime-aligned packages must stay on the 10.x line;
+    # moving to .NET 11 is a deliberate upgrade (TFM + global.json), not a Dependabot bump.
+    ignore:
+      - dependency-name: 'Microsoft.Extensions.*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'Microsoft.AspNetCore.*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'Microsoft.EntityFrameworkCore*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'System.*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'dotnet-ef'
+        update-types: ['version-update:semver-major']
 
   - package-ecosystem: npm
     directories:
