@@ -73,14 +73,14 @@ public static class DbSeeder
             CreatedAtUtc = now,
         };
 
-        var mariaFernanda = Persona("1020304050", "María Fernanda", "Gómez Rivas", "maria.gomez@example.com", "+57 300 111 2233", new DateOnly(1985, 3, 14));
-        var juanCarlos = Persona("1030405060", "Juan Carlos", "Pérez Londoño", "juan.perez@example.com", "+57 301 222 3344", new DateOnly(1979, 7, 2));
-        var anaSofia = Persona("1040506070", "Ana Sofía", "Martínez Cárdenas", "ana.martinez@example.com", "+57 302 333 4455", new DateOnly(1992, 11, 23));
-        var carlosEduardo = Persona("1050607080", "Carlos Eduardo", "Rodríguez Salazar", "carlos.rodriguez@example.com", "+57 303 444 5566", new DateOnly(1988, 1, 9));
-        var lauraValentina = Persona("1060708090", "Laura Valentina", "Torres Jiménez", "laura.torres@example.com", "+57 304 555 6677", new DateOnly(1995, 5, 30));
-        var andresFelipe = Persona("1070809010", "Andrés Felipe", "Ramírez Ocampo", "andres.ramirez@example.com", "+57 305 666 7788", new DateOnly(1983, 9, 17));
-        var dianaMarcela = Persona("1080901020", "Diana Marcela", "Suárez Peña", "diana.suarez@example.com", "+57 306 777 8899", new DateOnly(1990, 4, 5));
-        var jorgeLuis = Persona("1090102030", "Jorge Luis", "Castañeda Mora", "jorge.castaneda@example.com", "+57 307 888 9900", new DateOnly(1976, 12, 1));
+        var mariaFernanda = Persona("1020304050", "María Fernanda", "Gómez Rivas", "maria.gomez@example.com", "+57 300 000 0001", new DateOnly(1985, 3, 14));
+        var juanCarlos = Persona("1030405060", "Juan Carlos", "Pérez Londoño", "juan.perez@example.com", "+57 300 000 0002", new DateOnly(1979, 7, 2));
+        var anaSofia = Persona("1040506070", "Ana Sofía", "Martínez Cárdenas", "ana.martinez@example.com", "+57 300 000 0003", new DateOnly(1992, 11, 23));
+        var carlosEduardo = Persona("1050607080", "Carlos Eduardo", "Rodríguez Salazar", "carlos.rodriguez@example.com", "+57 300 000 0004", new DateOnly(1988, 1, 9));
+        var lauraValentina = Persona("1060708090", "Laura Valentina", "Torres Jiménez", "laura.torres@example.com", "+57 300 000 0005", new DateOnly(1995, 5, 30));
+        var andresFelipe = Persona("1070809010", "Andrés Felipe", "Ramírez Ocampo", "andres.ramirez@example.com", "+57 300 000 0006", new DateOnly(1983, 9, 17));
+        var dianaMarcela = Persona("1080901020", "Diana Marcela", "Suárez Peña", "diana.suarez@example.com", "+57 300 000 0007", new DateOnly(1990, 4, 5));
+        var jorgeLuis = Persona("1090102030", "Jorge Luis", "Castañeda Mora", "jorge.castaneda@example.com", "+57 300 000 0008", new DateOnly(1976, 12, 1));
 
         mariaFernanda.Procesos.Add(ProcesoCivilArriendo(mariaFernanda));
         mariaFernanda.Procesos.Add(ProcesoLaboralDespido(mariaFernanda));
