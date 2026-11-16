@@ -49,6 +49,7 @@ jobs:
             paths-ignore:
               - '**/node_modules/**'
               - '**/dist/**'
+              - '**/obj/**'
               - 'src/Procesos.Data/Migrations/**'
 
       - if: matrix.build-mode == 'manual'
