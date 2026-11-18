@@ -31,8 +31,13 @@ public static class EventosEndpoints
         return TypedResults.Ok(eventos);
     }
 
-    private static async Task<Results<Created<EventoListItemDto>, NotFound<string>>> CrearAsync(ProcesosDbContext db, int procesoId, EventoUpsertDto dto)
+    private static async Task<Results<Created<EventoListItemDto>, BadRequest<string>, NotFound<string>>> CrearAsync(ProcesosDbContext db, int procesoId, EventoUpsertDto dto)
     {
+        if (dto.Validar() is { } error)
+        {
+            return TypedResults.BadRequest(error);
+        }
+
         var proceso = await db.Procesos.FirstOrDefaultAsync(p => p.Id == procesoId);
         if (proceso is null)
         {

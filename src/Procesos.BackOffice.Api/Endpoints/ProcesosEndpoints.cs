@@ -56,8 +56,13 @@ public static class ProcesosEndpoints
         return proceso is null ? TypedResults.NotFound() : TypedResults.Ok(proceso.ToDetailDto());
     }
 
-    private static async Task<Results<Created<ProcesoDetailDto>, NotFound<string>, Conflict<string>>> CrearAsync(ProcesosDbContext db, ProcesoUpsertDto dto)
+    private static async Task<Results<Created<ProcesoDetailDto>, BadRequest<string>, NotFound<string>, Conflict<string>>> CrearAsync(ProcesosDbContext db, ProcesoUpsertDto dto)
     {
+        if (dto.Validar() is { } error)
+        {
+            return TypedResults.BadRequest(error);
+        }
+
         if (!await db.Personas.AnyAsync(p => p.Id == dto.PersonaId))
         {
             return TypedResults.NotFound($"No existe una persona con Id={dto.PersonaId}.");
@@ -78,8 +83,13 @@ public static class ProcesosEndpoints
         return TypedResults.Created($"/api/procesos/{proceso.Id}", creado.ToDetailDto());
     }
 
-    private static async Task<Results<Ok<ProcesoDetailDto>, NotFound, Conflict<string>>> ActualizarAsync(ProcesosDbContext db, int id, ProcesoUpsertDto dto)
+    private static async Task<Results<Ok<ProcesoDetailDto>, BadRequest<string>, NotFound, Conflict<string>>> ActualizarAsync(ProcesosDbContext db, int id, ProcesoUpsertDto dto)
     {
+        if (dto.Validar() is { } error)
+        {
+            return TypedResults.BadRequest(error);
+        }
+
         var proceso = await db.Procesos.FirstOrDefaultAsync(p => p.Id == id);
         if (proceso is null)
         {

@@ -50,8 +50,13 @@ public static class PersonasEndpoints
         return persona is null ? TypedResults.NotFound() : TypedResults.Ok(persona.ToDetailDto());
     }
 
-    private static async Task<Results<Created<PersonaDetailDto>, Conflict<string>>> CrearAsync(ProcesosDbContext db, PersonaUpsertDto dto)
+    private static async Task<Results<Created<PersonaDetailDto>, BadRequest<string>, Conflict<string>>> CrearAsync(ProcesosDbContext db, PersonaUpsertDto dto)
     {
+        if (dto.Validar() is { } error)
+        {
+            return TypedResults.BadRequest(error);
+        }
+
         if (await db.Personas.AnyAsync(p => p.DocumentoIdentidad == dto.DocumentoIdentidad.Trim()))
         {
             return TypedResults.Conflict($"Ya existe una persona con documento de identidad '{dto.DocumentoIdentidad}'.");
@@ -66,8 +71,13 @@ public static class PersonasEndpoints
         return TypedResults.Created($"/api/personas/{persona.Id}", persona.ToDetailDto());
     }
 
-    private static async Task<Results<Ok<PersonaDetailDto>, NotFound, Conflict<string>>> ActualizarAsync(ProcesosDbContext db, int id, PersonaUpsertDto dto)
+    private static async Task<Results<Ok<PersonaDetailDto>, BadRequest<string>, NotFound, Conflict<string>>> ActualizarAsync(ProcesosDbContext db, int id, PersonaUpsertDto dto)
     {
+        if (dto.Validar() is { } error)
+        {
+            return TypedResults.BadRequest(error);
+        }
+
         var persona = await db.Personas.Include(p => p.Procesos).FirstOrDefaultAsync(p => p.Id == id);
         if (persona is null)
         {
