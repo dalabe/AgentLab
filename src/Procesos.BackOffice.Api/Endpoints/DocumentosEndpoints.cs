@@ -39,6 +39,18 @@ public static class DocumentosEndpoints
         ProcesosDbContext db, DocumentPathResolver pathResolver, int procesoId,
         IFormFile archivo, [FromForm] string nombre, [FromForm] TipoDocumento tipo)
     {
+        // Validate before writing anything to disk, so a rejected request leaves no orphan file.
+        var nombreFinal = string.IsNullOrWhiteSpace(nombre) ? archivo.FileName : nombre.Trim();
+        if (nombreFinal.Length > 200)
+        {
+            return TypedResults.BadRequest("El campo 'nombre' admite como máximo 200 caracteres.");
+        }
+
+        if (!Enum.IsDefined(tipo))
+        {
+            return TypedResults.BadRequest("El campo 'tipo' tiene un valor no válido.");
+        }
+
         var proceso = await db.Procesos.FirstOrDefaultAsync(p => p.Id == procesoId);
         if (proceso is null)
         {
@@ -64,7 +76,7 @@ public static class DocumentosEndpoints
         var documento = new DocumentoProceso
         {
             ProcesoId = procesoId,
-            Nombre = string.IsNullOrWhiteSpace(nombre) ? archivo.FileName : nombre.Trim(),
+            Nombre = nombreFinal,
             Tipo = tipo,
             RutaRelativa = rutaRelativa,
             ContentType = string.IsNullOrWhiteSpace(archivo.ContentType) ? "application/octet-stream" : archivo.ContentType,

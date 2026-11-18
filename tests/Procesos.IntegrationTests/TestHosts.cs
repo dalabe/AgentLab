@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Procesos.BackOffice.Api.Dtos;
 using Procesos.McpServer.Tools;
 using Procesos.TokenService.Endpoints;
 
@@ -39,6 +40,21 @@ public sealed class McpServerFactory : WebApplicationFactory<ProcesoTools>
     {
         builder.UseEnvironment("Testing");
         builder.UseSetting("Security:Jwt:SigningKey", TestSecrets.SigningKey);
+        builder.UseSetting("ConnectionStrings:ProcesosDb", "Server=(localdb)\\unused;Database=unused;Trusted_Connection=True");
+        builder.UseSetting("DocumentStorage:RootPath", Path.Combine(Path.GetTempPath(), "procesos-it-docs"));
+    }
+}
+
+/// <summary>
+/// Hosts Procesos.BackOffice.Api in memory. Environment "Testing" skips migrations and seeding; the
+/// connection string points at an unused LocalDB instance because the validation tests are answered
+/// before any query runs.
+/// </summary>
+public sealed class BackOfficeApiFactory : WebApplicationFactory<PersonaUpsertDto>
+{
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    {
+        builder.UseEnvironment("Testing");
         builder.UseSetting("ConnectionStrings:ProcesosDb", "Server=(localdb)\\unused;Database=unused;Trusted_Connection=True");
         builder.UseSetting("DocumentStorage:RootPath", Path.Combine(Path.GetTempPath(), "procesos-it-docs"));
     }

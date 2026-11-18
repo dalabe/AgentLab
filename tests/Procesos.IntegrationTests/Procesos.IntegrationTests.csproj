@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Procesos.TokenService\Procesos.TokenService.csproj" />
     <ProjectReference Include="..\..\src\Procesos.McpServer\Procesos.McpServer.csproj" />
+    <ProjectReference Include="..\..\src\Procesos.BackOffice.Api\Procesos.BackOffice.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>
