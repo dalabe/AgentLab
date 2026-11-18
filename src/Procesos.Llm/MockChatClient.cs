@@ -177,12 +177,47 @@ public sealed partial class MockChatClient : IChatClient
         {
             var resultado = await tool.InvokeAsync(new AIFunctionArguments(args), ct);
             contenidos.Add(new FunctionResultContent(callId, resultado));
-            return (resultado?.ToString(), null);
+            var json = resultado?.ToString();
+            return ExtraerErrorDeTool(json) is { } error ? (null, error) : (json, null);
         }
         catch (Exception ex)
         {
             contenidos.Add(new FunctionResultContent(callId, $"Error: {ex.Message}"));
             return (null, ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// MCP tools report failures (e.g. not found) as a <c>CallToolResult</c> with <c>isError: true</c>
+    /// instead of throwing. Returns the error text in that case, otherwise <c>null</c>.
+    /// </summary>
+    private static string? ExtraerErrorDeTool(string? json)
+    {
+        if (string.IsNullOrWhiteSpace(json) || json.TrimStart()[0] != '{')
+        {
+            return null;
+        }
+
+        try
+        {
+            using var doc = JsonDocument.Parse(json);
+            var root = doc.RootElement;
+            if (!root.TryGetProperty("isError", out var isError) || isError.ValueKind != JsonValueKind.True)
+            {
+                return null;
+            }
+
+            var textos = root.TryGetProperty("content", out var content) && content.ValueKind == JsonValueKind.Array
+                ? content.EnumerateArray()
+                    .Where(c => c.TryGetProperty("text", out _))
+                    .Select(c => c.GetProperty("text").GetString())
+                : [];
+            var mensaje = string.Join(" ", textos);
+            return string.IsNullOrWhiteSpace(mensaje) ? "la herramienta devolvió un error." : mensaje;
+        }
+        catch (JsonException)
+        {
+            return null;
         }
     }
 

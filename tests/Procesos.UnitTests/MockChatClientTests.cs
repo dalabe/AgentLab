@@ -40,6 +40,24 @@ public sealed class MockChatClientTests
     }
 
     [Fact]
+    public async Task CaseNumberQuestion_WhenToolReportsError_ExplainsInsteadOfThrowing()
+    {
+        // Shape returned by the MCP client when the server answers a tools/call with isError=true.
+        const string errorResult = """
+            { "content": [ { "type": "text", "text": "No existe ningún proceso con número de expediente 'EXP-9999-00000'." } ], "isError": true }
+            """;
+        var tool = AIFunctionFactory.Create((string numeroExpediente) => errorResult, "obtener_proceso");
+
+        using var client = new MockChatClient();
+        var response = await client.GetResponseAsync(
+            Ask("¿Cuál es el estado del proceso EXP-9999-00000?"),
+            new ChatOptions { Tools = [tool] });
+
+        Assert.Contains("No pude obtener el proceso 'EXP-9999-00000'", response.Text, StringComparison.Ordinal);
+        Assert.Contains("No existe ningún proceso", response.Text, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public async Task UnrecognisedQuestion_ReturnsHelpListingAvailableTools()
     {
         var tool = AIFunctionFactory.Create(() => "[]", "buscar_personas");
