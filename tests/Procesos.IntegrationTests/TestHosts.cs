@@ -41,7 +41,7 @@ public sealed class McpServerFactory : WebApplicationFactory<ProcesoTools>
         builder.UseEnvironment("Testing");
         builder.UseSetting("Security:Jwt:SigningKey", TestSecrets.SigningKey);
         builder.UseSetting("ConnectionStrings:ProcesosDb", "Server=(localdb)\\unused;Database=unused;Trusted_Connection=True");
-        builder.UseSetting("DocumentStorage:RootPath", Path.Combine(Path.GetTempPath(), "procesos-it-docs"));
+        builder.UseSetting("DocumentStorage:RootPath", Path.Join(Path.GetTempPath(), "procesos-it-docs"));
     }
 }
 
@@ -56,6 +56,6 @@ public sealed class BackOfficeApiFactory : WebApplicationFactory<PersonaUpsertDt
     {
         builder.UseEnvironment("Testing");
         builder.UseSetting("ConnectionStrings:ProcesosDb", "Server=(localdb)\\unused;Database=unused;Trusted_Connection=True");
-        builder.UseSetting("DocumentStorage:RootPath", Path.Combine(Path.GetTempPath(), "procesos-it-docs"));
+        builder.UseSetting("DocumentStorage:RootPath", Path.Join(Path.GetTempPath(), "procesos-it-docs"));
     }
 }
