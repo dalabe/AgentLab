@@ -72,8 +72,9 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        # Same Node/npm as ci.yml (npm 11, see packageManager in package.json).
         with:
-          node-version: 22
+          node-version: 24
       - name: Audit production dependencies (fail on high)
         run: npm audit --omit=dev --audit-level=high
       - name: Audit all dependencies (report only)

@@ -57,8 +57,8 @@ flowchart TB
 
 | Container | Tech | Port | Responsibility | Talks to |
 |---|---|---|---|---|
-| `procesos-chat-web` | Angular 21 (standalone, signals) | 4200 | Single-page chat UI, shows tool-call trace | ChatApi |
-| `procesos-backoffice-web` | Angular 21 + Angular Material | 4300 | Admin UI for Personas, Procesos, Documentos, Eventos | BackOffice.Api |
+| `procesos-chat-web` | Angular 22 (standalone, signals) | 4200 | Single-page chat UI, shows tool-call trace | ChatApi |
+| `procesos-backoffice-web` | Angular 22 + Angular Material | 4300 | Admin UI for Personas, Procesos, Documentos, Eventos | BackOffice.Api |
 | `Procesos.ChatApi` | ASP.NET Core minimal API | 5090 | Holds chat history, calls LLM with MCP tools, returns answer + tool trace | TokenService, McpServer, LLM |
 | `Procesos.TokenService` | ASP.NET Core minimal API | 5061 | Minimal STS: `POST /connect/token` (client_credentials), rate limited | — |
 | `Procesos.McpServer` | ASP.NET Core + `ModelContextProtocol.AspNetCore` | 5071 | Stateless MCP server exposing 6 read-only tools; requires JWT with `scope=mcp.tools.invoke`; **no CORS** | SQL LocalDB, filesystem |
