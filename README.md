@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/github/license/dalabe/AgentLab)](LICENSE)
 
 An educational, end-to-end **Model Context Protocol (MCP)** reference implementation in
-**.NET 10 / C#** and **Angular 21**.
+**.NET 10 / C#** and **Angular 22**.
 
 A chat UI answers natural-language questions (in Spanish) about people and their legal cases.
 An LLM — Anthropic Claude, or a deterministic Mock that needs no API key — calls **read-only tools**
@@ -34,7 +34,7 @@ flowchart LR
 
 ## Quick start
 
-Prerequisites: Windows, .NET SDK 10, Node 20+, SQL Server Express LocalDB.
+Prerequisites: Windows, .NET SDK 10, Node 24.15+ (npm 11), SQL Server Express LocalDB.
 
 ```powershell
 git clone https://github.com/dalabe/AgentLab.git; cd AgentLab
@@ -66,7 +66,7 @@ Full instructions: [docs/RUNBOOK.md](docs/RUNBOOK.md).
 ## Tech stack
 
 .NET 10 · ASP.NET Core minimal APIs · EF Core 10 · .NET Aspire 13 · ModelContextProtocol 2.4 ·
-Microsoft.Extensions.AI · Anthropic .NET SDK · Angular 21 · Angular Material · Vitest · xUnit.
+Microsoft.Extensions.AI · Anthropic .NET SDK · Angular 22 · Angular Material · Vitest · xUnit.
 
 ## License
 

@@ -62,6 +62,6 @@ persistent chat history.
 
 ## Constraints
 
-- .NET SDK 10, Angular 21, Node 20+, SQL Server LocalDB (Windows).
+- .NET SDK 10, Angular 22, Node 24.15+ (npm 11), SQL Server LocalDB (Windows).
 - Fixed ports: TokenService 5061, McpServer 5071, BackOffice.Api 5080, ChatApi 5090,
   chat-web 4200, backoffice-web 4300.

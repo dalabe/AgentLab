@@ -6,7 +6,7 @@
 ## What this repo is
 
 **Procesos Legales Lab**: an educational, end-to-end **Model Context Protocol (MCP)** reference in
-**.NET 10 / C#** + **Angular 21**. A Spanish chat answers questions about people and their legal
+**.NET 10 / C#** + **Angular 22**. A Spanish chat answers questions about people and their legal
 cases by letting an LLM call **read-only tools** on a **JWT-protected MCP server**, through an MCP
 client, with OAuth2 client-credentials security between services. A BackOffice manages the data in
 SQL Server LocalDB. All data is synthetic.

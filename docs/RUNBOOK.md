@@ -6,7 +6,7 @@
 |---|---|---|
 | Visual Studio 2022 17.14+ / VS 2026 (ASP.NET + Aspire workloads) — or VS Code + C# Dev Kit | — | — |
 | .NET SDK | 10.x (verified `10.0.401`) — pinned in [`global.json`](../global.json) | `dotnet --version` |
-| Node.js + npm | Node 20+ (verified `v24.14.0`, npm `11.9.0`) | `node --version` |
+| Node.js + npm | Node 24.15+ with npm 11 (`packageManager: npm@11.9.0`; Angular 22 needs Node ≥ 24.15) | `node --version` |
 | SQL Server Express LocalDB (Windows) | any | `sqllocaldb info` lists `MSSQLLocalDB` |
 | `dotnet-ef` (only to create migrations) | local tool, `.config/dotnet-tools.json` | `dotnet tool restore` |
 
